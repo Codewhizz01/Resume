@@ -1,0 +1,47 @@
+/* Universal selector */
+* {
+  font-family: Arial, sans-serif;
+}
+
+/* Element selector */
+button {
+  border: none;
+}
+
+/* Grouping selector */
+.btn-solid, .btn-pill {
+  color: #ffffff;
+}
+
+/* Compound selector */
+.btn.btn-solid {
+  background-color: #5a1a1a;
+}
+
+.btn.btn-solid:hover {
+  background-color: #3d1212;
+}
+
+.btn.btn-outline {
+  background-color: #ffffff;
+  color: #5a1a1a;
+  border: 2px solid #5a1a1a;
+}
+
+.btn.btn-outline:hover {
+  background-color: #5a1a1a;
+  color: #ffffff;
+}
+
+.btn.btn-pill {
+  background-color: #c0522d;
+}
+
+.btn.btn-pill:hover {
+  background-color: #a3431f;
+}
+
+/* Attribute selector */
+button[type="button"] {
+  font-weight: bold;
+}

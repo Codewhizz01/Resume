@@ -1,0 +1,40 @@
+/* Universal selector */
+* {
+  font-family: Arial, sans-serif;
+}
+
+/* Class selector */
+.navbar {
+  background-color: #5a1a1a;
+}
+
+.brand {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Descendant selector */
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Child selector — li that is a direct child of nav-links */
+.nav-links > li {
+  color: #ffffff;
+}
+
+/* Compound selector — an <a> that also has class "active" */
+.nav-links a.active {
+  background-color: #c0522d;
+}
+
+/* Attribute selector */
+a[href="#"] {
+  font-style: normal;
+}
+
+/* Hover state */
+.nav-links a:hover {
+  text-decoration: underline;
+}
