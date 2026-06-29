@@ -1,47 +1,71 @@
-/* Universal selector */
-* {
-  font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* Element selector */
-button {
-  border: none;
+body{
+    text-align:center;
+    margin-top:100px;
 }
 
-/* Grouping selector */
-.btn-solid, .btn-pill {
-  color: #ffffff;
+h1{
+    margin-bottom:30px;
 }
 
-/* Compound selector */
-.btn.btn-solid {
-  background-color: #5a1a1a;
+button{
+    padding:12px 25px;
+    margin:10px;
+    font-size:16px;
+    cursor:pointer;
 }
 
-.btn.btn-solid:hover {
-  background-color: #3d1212;
+/* Solid */
+
+.solid{
+    background-color:maroon;
+    color:white;
+    border:none;
 }
 
-.btn.btn-outline {
-  background-color: #ffffff;
-  color: #5a1a1a;
-  border: 2px solid #5a1a1a;
+.solid:hover{
+    background-color:darkred;
 }
 
-.btn.btn-outline:hover {
-  background-color: #5a1a1a;
-  color: #ffffff;
+/* Outline */
+
+.outline{
+    background-color:white;
+    color:maroon;
+    border:2px solid maroon;
 }
 
-.btn.btn-pill {
-  background-color: #c0522d;
+.outline:hover{
+    background-color:maroon;
+    color:white;
 }
 
-.btn.btn-pill:hover {
-  background-color: #a3431f;
+/* Pill */
+
+.pill{
+    background-color:peru;
+    color:white;
+    border:none;
+    border-radius:20px;
 }
 
-/* Attribute selector */
-button[type="button"] {
-  font-weight: bold;
+.pill:hover{
+    background-color:saddlebrown;
+}
+
+/* Accent */
+
+.accent{
+    background-color:goldenrod;
+    color:white;
+    border:none;
+}
+
+.accent:hover{
+    background-color:orange;
 }
