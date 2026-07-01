@@ -107,3 +107,178 @@ why certain HTML practices are Avoided, and every CSS selector I practiced***
 - Used all the selectors above on my real resume elements.
 - Wrote this file to explain my understanding.
 - Built profile-card, navbar, and buttons as separate practice projects.
+
+
+
+
+# ----------Improve Resume using better semantic tags, better version(Day-5)------------
+
+***A breakdown of every HTML tag and CSS selector used in index.html and style.css, grouped by purpose with  explanation each***
+
+---------------------------------------
+###HTML TAGS
+---------------------------------------
+
+--- Document structure ---
+- `<html lang="en">` - Root of the page, declares language
+- `<head>` - Metadata container (not visible on page)
+- `<meta charset>` - Sets character encoding
+- `<meta viewport>` - Makes the page responsive on mobile
+- `<title> `- Text shown in the browser tab
+- `<link rel="stylesheet"> `- Connects the CSS file
+- `<body>` - Everything visible on the page
+
+
+--- Semantic layout tags ---
+- `<article>` - A self-contained block of content (whole resume, each project card)
+- `<header> `- Intro area — name, title, nav
+- `<hgroup> `- Groups a heading with its subheading (h1 + h3)
+- `<nav> ` - Navigation links
+- `<aside> `- Content related to but separate from main flow (sidebar, highlight box)
+- `<section>` - A distinct thematic chunk (Skills, Education, Projects, etc.)
+- `<main>` - The primary content of the page
+- `<footer>` - Closing area — place & signature
+
+
+--- Headings & text ---
+- `<h1> to <h3>` - Headings, in order of importance
+- `<span> `- Inline wrapper with no meaning of its own — used only for the gold "Bora" accent
+- `<p>` - Paragrap
+
+-- Media & figures ---
+- `<figure>` - Wraps an image with an optional caption
+- `<img> `- The profile photo
+- `<figcaption>` - Caption for the figure (visually hidden here, kept for accessibility)
+
+--- Lists ---
+- `<ul> / <li>` - Unordered list (skills, hobbies, contact links)
+- `<ol> `- Ordered list (project steps, since order matters)
+- `<dl> / <dt> / <dd>` - Description list — pairs a term (school) with its detail (dates), used for Education
+
+--- Contact info ---
+- `<address>` - Marks up contact information specifically
+- `<a href> `- Hyperlink
+
+--- Interactive / disclosure ---
+- `<details> / <summary>` - Native expand/collapse widget — "More about this project"
+
+--- Form ---
+- `<form> `- Wraps form controls
+- `<input type="text">` - Single-line text input
+- `<input type="email">` - Email input (adds basic browser validation)
+- `<textarea>` - Multi-line text input
+- `<button type="submit">` - Submits the form
+
+
+----------------------------------------
+##CSS SELECTORS
+----------------------------------------
+
+--- Custom properties ---
+- `:root { --dark: #1c1c1c; }`
+- Defines reusable variables (colors) at the top level, referenced later via var(--dark).
+
+--- Universal selector ---
+- `* { box-sizing: border-box; }`
+- Targets every element — used here to reset box-sizing and font globally.
+
+--- Type (element) selectors ---
+- `body { ... }   h1 { ... }   p { ... }   hr { ... }`
+- Targets all elements of that tag name, no matter where they are.
+
+--- Class selectors ---
+- `.resume { ... }   .sidebar { ... }   .highlight-box { ... }`
+- Targets any element with that class="..." attribute — the most-used selector type here.
+
+--- ID selectors ---
+- `#objective { ... }   #contact form { ... }   #skills { ... }`
+- Targets one specific element by its id. Note #contact form combines an ID with a descendant tag.
+
+--- Grouping selector ---
+- `h1, h2, h3 { font-family: Arial; }`
+- Comma-separates multiple selectors so they share one rule block, instead of repeating it three times
+
+--- Descendant combinator ---
+- `.sidebar h2 { ... }   #projects article:hover { ... }`
+- Space between selectors = "the second one, anywhere inside the first." .sidebar h2 only styles h2s inside .sidebar, not every h2 on the page.
+
+--- Compound selector ---
+- `.sidebar h3.featured { ... }`
+- No space = same element must match both, Here: an h3 that is also inside .sidebar and also carries the featured class.
+
+--- Pseudo-classes ---
+- `nav a:hover { ... }`
+- `.sidebar-section:last-child { ... }`
+Style an element based on a state or position — :hover fires on mouse-over, :last-child targets the final sibling.
+
+--- Pseudo-elements ---
+- `h2::after { content: ""; }`
+- `.sidebar li::before { content: "\25C6"; }`
+- Generate a virtual "extra" element attached to the real one — draws the gold line after headings and the diamond bullet before list items. Pure decoration, not real content.
+
+--- Attribute selectors ---
+- `input[type="email"] { border-color: var(--gold); }`
+-` input[type="text"] { border-color: var(--dark); }`
+- Targets elements based on an attribute's value — lets the two input types have different border colors without extra classes.
+
+--- Media query ---
+- `@media (max-width: 750px) { ... }`
+-Not a selector on its own, but a conditional wrapper — rules inside only apply when the screen is narrower than 750px (stacks the grid into one column for mobile).
+
+
+-----------------------------------
+##QUICK REVISION
+------------------------------------
+- Tag = what kind of thing is this (semantic meaning: article, nav, dl)
+- Class = reusable style hook (.sidebar-section)
+- ID = one unique target (#objective)
+- Pseudo-class = state-based (:hover, :last-child)
+- Pseudo-element =  extra element for decoration (::before, ::after)
+
+
+-------------------------------------
+##WHY WE AVOID USING TABLE TAGS
+-------------------------------------
+
+
+# Even though tables can display data neatly, this resume avoids` <table> `for layout — here's why:
+
+-` <table>` means "this is a grid with rows AND columns that relate to each other across both axes" — like a price comparison chart or a multiplication table, where you'd genuinely have column headers.
+
+- The Education section here is just pairs — one term, one detail (school → dates). There's no second axis, no column headers, nothing that needs row/column relationships.
+
+- `<dl>/<dt>/<dd> `(description list) was built exactly for this shape: "term → detail" pairs, not a full grid.
+
+-Using` <table> `for non-tabular content is a semantic and accessibility problem (it confuses screen readers, which announce "table" and try to navigate it row by row.
+
+
+--------------------------------
+##WHAT I LEARNED
+--------------------------------
+
+- Went deep into the HTML tags and CSS selectors used in my resume project 
+today. Key takeaway: semantic HTML isn't about which tag "looks right" — 
+it's about picking the tag whose MEANING matches the content's actual 
+shape.
+
+- Learned the difference between `<table> `(grid data, two axes) and 
+  `<dl>/<dt>/<dd> `(term → detail pairs) — and corrected my own assumption 
+  that we avoid tables for file size. It's actually about semantic 
+  correctness and accessibility (screen readers), not weight.
+
+- Went through every tag in my resume — structural (header, main, footer), 
+  semantic (article, section, aside), and form elements — and understood 
+  WHY each one was chosen over a generic div/span.
+
+- Broke down every CSS selector type used: type selectors, class/ID 
+  selectors, grouping, descendant combinators, compound selectors, 
+  pseudo-classes (:hover, :last-child), pseudo-elements (::before, 
+  ::after), attribute selectors, and media queries.
+
+- Biggest mindset shift: writing "no div, no span" HTML forces you to 
+  actually think about what each piece of content IS, not just how to 
+  make it look styled,That's the real value of semantic markup — for 
+  accessibility, SEO, and for the next person (or future me) reading 
+  the code.
+
+
